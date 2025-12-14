@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.application")
-    //id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
     id("com.google.devtools.ksp")
     id("com.google.gms.google-services") version "4.4.2" apply false
     kotlin("plugin.serialization") version "1.9.10"
