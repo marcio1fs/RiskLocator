@@ -7,7 +7,7 @@ Um aplicativo Android para localização e gerenciamento de riscos desenvolvido 
 - Android Studio Hedgehog (2023.1.1) ou superior
 - JDK 11 ou superior
 - Android SDK com API Level 24 (Android 7.0) ou superior
-- Kotlin 1.9.24
+- Kotlin 1.9.10
 
 ## Como Testar o Aplicativo
 
