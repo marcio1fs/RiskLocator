@@ -12,6 +12,7 @@ The following test dependencies are configured in `app/build.gradle.kts`:
 - **JUnit 4.13.2**: Standard testing framework for Java/Kotlin
   - Used for: Logic testing without Android framework dependencies
   - Runs on: Local JVM (fast execution)
+  - Note: JUnit 4 is stable and widely used. For new projects, consider migrating to JUnit 5 (Jupiter) which offers more modern features like parameterized tests, nested tests, and better extension model.
 
 ### Instrumented Testing
 - **AndroidX Test JUnit 1.2.1**: JUnit integration for Android
@@ -293,10 +294,48 @@ To expand testing in this project:
 4. **Configure CI/CD** to run tests automatically
 5. **Add integration tests** for Firebase services (using Firebase Test Lab)
 6. **Consider adding** MockK for mocking in tests
+7. **Migrate to JUnit 5** for new test development (see migration guide below)
+
+## Migrating to JUnit 5 (Jupiter)
+
+JUnit 5 offers modern testing features. To migrate:
+
+### Add JUnit 5 Dependencies
+
+```kotlin
+dependencies {
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.1")
+    
+    // For parameterized tests
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.10.1")
+    
+    // To run JUnit 4 tests alongside JUnit 5
+    testImplementation("org.junit.vintage:junit-vintage-engine:5.10.1")
+}
+
+android {
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
+}
+```
+
+### JUnit 5 Benefits
+
+- **Parameterized Tests**: Run same test with different inputs
+- **Nested Tests**: Better test organization
+- **DisplayName**: More readable test names
+- **Dynamic Tests**: Generate tests at runtime
+- **Better assertions**: More expressive assertion methods
+- **Extension Model**: More flexible than JUnit 4 rules
 
 ## Resources
 
 - [Android Testing Documentation](https://developer.android.com/training/testing)
 - [JUnit 4 Wiki](https://github.com/junit-team/junit4/wiki)
+- [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/)
 - [Espresso Documentation](https://developer.android.com/training/testing/espresso)
 - [AndroidX Test](https://developer.android.com/training/testing/set-up-project)

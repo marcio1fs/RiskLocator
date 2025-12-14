@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.serialization)
-    id("com.google.gms.google-services") version "4.4.2" apply false
+    alias(libs.plugins.google.services) apply false
     id("com.github.ben-manes.versions") version "0.48.0"
 }
 
@@ -60,5 +60,4 @@ buildscript {
        implementation("com.google.firebase:firebase-auth-ktx")
        implementation("com.google.firebase:firebase-firestore-ktx")
        implementation("com.google.firebase:firebase-messaging-ktx")
-       implementation("androidx.core:core-ktx:1.9.0")
    }
